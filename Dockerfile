@@ -44,8 +44,8 @@ ARG RESTY_CONFIG_OPTIONS="\
     --with-threads \
     "
 ARG RESTY_CONFIG_OPTIONS_MORE="--add-module=/absolute/path/to/nginx-sticky-module-ng"
-ARG RESTY_ADD_PACKAGE_BUILDDEPS=""
-ARG RESTY_ADD_PACKAGE_RUNDEPS="unzip curl net-tools"
+ARG RESTY_ADD_PACKAGE_BUILDDEPS="unzip"
+ARG RESTY_ADD_PACKAGE_RUNDEPS=""
 ARG RESTY_EVAL_PRE_CONFIGURE=""
 ARG RESTY_EVAL_POST_MAKE=""
 
@@ -95,8 +95,8 @@ RUN apk add --no-cache --virtual .build-deps \
     && tar xzf pcre-${RESTY_PCRE_VERSION}.tar.gz \
     && curl -fSL https://openresty.org/download/openresty-${RESTY_VERSION}.tar.gz -o openresty-${RESTY_VERSION}.tar.gz \
     && tar xzf openresty-${RESTY_VERSION}.tar.gz \
-    && curl -fSL https://github.com/thomsonreuters/nginx-sticky-module-ng/archive/master.zip -o nginx-sticky-module-ng.tar.gz \
-    && tar xzf nginx-sticky-module-ng.tar.gz && mv nginx-sticky-module-ng-master nginx-sticky-module-ng \
+    && curl -fSL https://github.com/thomsonreuters/nginx-sticky-module-ng/archive/master.zip -o nginx-sticky-module-ng.zip \
+    && unzip nginx-sticky-module-ng.zip && mv nginx-sticky-module-ng-master nginx-sticky-module-ng \
     && cd /tmp/openresty-${RESTY_VERSION} \
     && ./configure -j${RESTY_J} ${_RESTY_CONFIG_DEPS} ${RESTY_CONFIG_OPTIONS} ${RESTY_CONFIG_OPTIONS_MORE} \
     && make -j${RESTY_J} \

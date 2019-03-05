@@ -3,12 +3,13 @@ sudo: required
 services:
 - docker
 
+
 script:
-- docker build -t wisecloud/openresty:$TRAVIS_BRANCH .
+- RESTY_VERSION="1.13.6.2"
+- docker build -t wisecloud/openresty:$RESTY_VERSION .
 
 deploy:
   provider: script
-  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wisecloud/openresty:$TRAVIS_BRANCH
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wisecloud/openresty:$RESTY_VERSION
   on:
     all_branches: true
-    #condition: "$TRAVIS_BRANCH =~ ^v[0-9]+\\.[0-9]+(\\.[0-9]+)?(-\\S*)?$"
