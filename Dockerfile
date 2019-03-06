@@ -43,7 +43,7 @@ ARG RESTY_CONFIG_OPTIONS="\
     --with-stream_ssl_module \
     --with-threads \
     "
-ARG RESTY_CONFIG_OPTIONS_MORE="--add-module=/absolute/path/to/nginx-sticky-module-ng"
+ARG RESTY_CONFIG_OPTIONS_MORE="--add-module=/tmp/nginx-sticky-module-ng"
 ARG RESTY_ADD_PACKAGE_BUILDDEPS="unzip"
 ARG RESTY_ADD_PACKAGE_RUNDEPS=""
 ARG RESTY_EVAL_PRE_CONFIGURE=""
