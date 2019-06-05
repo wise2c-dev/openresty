@@ -5,7 +5,8 @@ services:
 
 
 script:
-- RESTY_VERSION="1.13.6.2"
+#- RESTY_VERSION="1.13.6.2"
+- RESTY_VERSION="1.15.8.1"
 - docker build -t wisecloud/openresty:$RESTY_VERSION .
 
 deploy:
